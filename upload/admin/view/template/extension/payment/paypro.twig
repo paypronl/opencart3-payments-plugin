@@ -1,0 +1,215 @@
+{{ header }}{{ column_left }}
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-paypro" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a></div>
+            <h1>{{ heading_title }}</h1>
+            <ul class="breadcrumb">
+                {% for breadcrumb in breadcrumbs %}
+                    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-paypro" class="form-horizontal">
+            {% for shop in shops %}
+                {% if error_warning %}
+                    <div class="alert alert-danger alert-dismissable">
+                        <i class="fa fa-exclamation-circle"></i>
+                        {{ shop.name }}: {{ error_warning }}
+                        <button type="button" class="close" data-dismiss="alert">&times;
+                        </button>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ paypro_config_title }}</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs">
+                        {% for shop in shops %}
+                            <li class="{{ shop.id == 0 ? 'active' : '' }}"><a data-toggle="tab" href="#store{{ shop.id }}">{{ shop.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="tab-content">
+                        {% for shop in shops %}
+                            <div id="store{{ shop.id }}" class="tab-pane fade in {{ shop.id == 0 ? 'active' : '' }}">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="#paypro-config-{{ shop.id }}">{{ main_config_title }}</a></li>
+                                    <li><a data-toggle="tab" href="#payment-statuses-{{ shop.id }}">{{ status_config_title }}</a></li>
+                                    <li><a data-toggle="tab" href="#about-{{ shop.id }}">{{ about_title }}</a></li>
+                                </ul>
+
+                                <div class="tab-content">
+                                    <div id="paypro-config-{{ shop.id }}" class="tab-pane fade in active">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="test_mode">{{ entry_test_mode }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][test_mode]" id="test_mode" class="form-control">
+                                                    {% if stores[shop.id]['test_mode'] %}
+                                                        <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                        <option value="0">{{ text_disabled }}</option>
+                                                    {% else %}
+                                                        <option value="1">{{ text_enabled }}</option>
+                                                        <option value="0" selected="selected">{{ text_disabled }}</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group required">
+                                            <label class="col-sm-2 control-label" for="api_key">{{ entry_api_key }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="stores[{{ shop.id }}][api_key]" value="{{ stores[shop.id]['api_key'] }}" id="api_key" class="form-control"/>
+                                                {% if stores[shop.id].error_api_key %}
+                                                    <div class="text-danger">{{ stores[shop.id].error_api_key }}</div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="product_id">{{ entry_product_id }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="stores[{{ shop.id }}][product_id]" value="{{ stores[shop.id]['product_id'] }}" id="product_id" class="form-control"/>
+                                                <div class="text-warning">{{ info_product_id }}</div>
+                                            </div>
+                                        </div>
+                                        {% for index,method in payment_methods %}
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">{{ method.label }}</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label" for="{{ method.id }}_status">{{ entry_status }}</label>
+                                                <div class="col-sm-9">
+                                                    <select name="stores[{{ shop.id }}][{{ method.id }}_status]" id="{{ method.id }}_status" class="form-control">
+                                                        {% if stores[shop.id][method.id ~ '_status'] %}
+                                                            <option value="1" selected="selected">{{ text_enabled }}</option>
+                                                            <option value="0">{{ text_disabled }}</option>
+                                                        {% else %}
+                                                            <option value="1">{{ text_enabled }}</option>
+                                                            <option value="0" selected="selected">{{ text_disabled }}</option>
+                                                        {% endif %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label" for="{{ method.id }}_geo_zone">{{ entry_geo_zone }}</label>
+                                                <div class="col-sm-9">
+                                                    <select name="stores[{{ shop.id }}][{{ method.id }}_geo_zone]" id="{{ method.id }}_geo_zone" class="form-control">
+                                                        <option value="0">{{ text_all_zones }}</option>
+                                                        {% for geo_zone in geo_zones %}
+                                                            {% if geo_zone.geo_zone_id == stores[shop.id][method.id ~ '_geo_zone'] %}
+                                                                <option value="{{ geo_zone.geo_zone_id }}" selected="selected">{{ geo_zone.name }}</option>
+                                                            {% else %}
+                                                                <option value="{{ geo_zone.geo_zone_id }}">{{ geo_zone.name }}</option>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-sm-3 control-label" for="{{ method.id }}_sort_order">{{ entry_sort_order }}</label>
+                                                <div class="col-sm-9">
+                                                    <input type="text" name="stores[{{ shop.id }}][{{ method.id }}_sort_order]" value="{{ stores[shop.id][method.id ~ '_sort_order'] }}" placeholder="{{ index + 1 }}" id="{{ method.id }}_sort_order" class="form-control" />
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <div id="payment-statuses-{{ shop.id }}" class="tab-pane fade in">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="pending_status_id">{{ pending_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][pending_status_id]" id="pending_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        {% if order_status.order_status_id == stores[shop.id]['pending_status_id'] %}
+                                                            <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="failed_status_id">{{ failed_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][failed_status_id]" id="failed_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        {% if order_status.order_status_id == stores[shop.id]['failed_status_id'] %}
+                                                            <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="canceled_status_id">{{ canceled_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][canceled_status_id]" id="canceled_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        {% if order_status.order_status_id == stores[shop.id]['canceled_status_id'] %}
+                                                            <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="expired_status_id">{{ expired_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][expired_status_id]" id="expired_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        {% if order_status.order_status_id == stores[shop.id]['expired_status_id'] %}
+                                                            <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="completed_status_id">{{ completed_status }}</label>
+                                            <div class="col-sm-10">
+                                                <select name="stores[{{ shop.id }}][completed_status_id]" id="completed_status_id" class="form-control">
+                                                    {% for order_status in order_statuses %}
+                                                        {% if order_status.order_status_id == stores[shop.id]['completed_status_id'] %}
+                                                            <option value="{{ order_status.order_status_id }}" selected="selected">{{ order_status.name }}</option>
+                                                        {% else %}
+                                                            <option value="{{ order_status.order_status_id }}">{{ order_status.name }}</option>
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="about-{{ shop.id }}" class="tab-pane fade in">
+                                        <fieldset>
+                                            <legend>PayPro - <a href="https://paypro.nl" target="_blank">PayPro.nl</a></legend>
+                                            <div class="row">
+                                                <label class="col-sm-2">Support</label>
+                                                <div class="col-sm-10">
+                                                    Contact us <a href="https://guide.paypro.nl/nl/" target="_blank">here</a>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{{ footer }}
