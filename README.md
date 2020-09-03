@@ -20,13 +20,7 @@ With this plugin you easily add all PayPro payment gateways to your Opencart v.3
 ## Requirements
 
 - PHP version 5.4 or greater
-- PHP extension cUrl
-- PHP extension GD
-- PHP extension Mbstring
-- PHP extension Mcrypt
-- PHP extension Zip
-- PHP extension Zlib
-- PHP extension Xml
+- OpenCart 3.0+
 
 ## Installation
 
