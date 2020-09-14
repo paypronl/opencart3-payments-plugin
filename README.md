@@ -24,6 +24,19 @@ With this plugin you easily add all PayPro payment gateways to your Opencart v.3
 
 ## Installation
 
+### Automatic Installation
+1. In the OpenCart admin panel go to Extensions -> MarketPlace. Search for 'PayPro Payment Gateways'
+2. Click the extension and click the Download tab and then click the install button
+3. Go to Extensions -> Extensions
+4. Select 'Payments' from 'Choose the extensions type' drop-down list, filter will be applied automatically
+5. Scroll down until you see PayPro entries
+6. Click on green circle with plus sign to install chosen payment method
+7. Click on blue icon to edit payment method settings
+8. Set your PayPro API key and Product ID
+9. Now set status to 'Enabled' for the chosen payment methods
+10. Your webshop is now ready to use PayPro gateways
+
+### Manual Installation
 1. In the Opencart admin panel go to Extensions -> Installer. Click on 'Upload'
 2. Select downloaded plugin archive file and installation will start immediately
 3. Go to Extensions -> Extensions
