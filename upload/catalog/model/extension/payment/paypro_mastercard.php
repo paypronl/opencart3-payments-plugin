@@ -1,5 +1,5 @@
 <?php
 
-require_once(__DIR__ . '/paypro/PayProPaymentMethod.php');
+require_once(__DIR__ . '/paypro.php');
 
-class ModelExtensionPaymentPayProMastercard extends PayProPaymentMethod {}
+class ModelExtensionPaymentPayProMastercard extends ModelExtensionPaymentPayPro {}
