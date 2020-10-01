@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(DIR_SYSTEM) . '/catalog/model/extension/payment/paypro/PayProPaymentCatalogController.php');
+require_once(__DIR__ . '/paypro.php');
 
-class ControllerExtensionPaymentPayProBancontact extends PayProPaymentCatalogController {
+class ControllerExtensionPaymentPayProBancontact extends ControllerExtensionPaymentPayPro {
 
 	public function getPaymentMethod() {
 		return 'bancontact/mistercash';

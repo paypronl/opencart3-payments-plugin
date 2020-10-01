@@ -1,5 +1,5 @@
 <?php
 
-require_once(dirname(DIR_SYSTEM) . '/catalog/model/extension/payment/paypro/PayProPaymentAdminController.php');
+require_once(__DIR__ . '/paypro.php');
 
-class ControllerExtensionPaymentPayProSepa extends PayProPaymentAdminController {}
+class ControllerExtensionPaymentPayProSepa extends ControllerExtensionPaymentPayPro {}

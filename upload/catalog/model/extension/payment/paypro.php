@@ -1,8 +1,8 @@
 <?php
 
-require_once(__DIR__ . '/PayProHelper.php');
+require_once(DIR_SYSTEM . 'library/paypro/helper.php');
 
-class PayProPaymentMethod extends Model {
+class ModelExtensionPaymentPayPro extends Model {
 
 	protected $methodID;
 	protected $path;

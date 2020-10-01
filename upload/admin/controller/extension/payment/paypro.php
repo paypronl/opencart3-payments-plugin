@@ -1,9 +1,9 @@
 <?php
 
-require_once(__DIR__ . '/PayProHelper.php');
-require_once(__DIR__ . '/PayProApi.php');
+require_once(DIR_SYSTEM . 'library/paypro/helper.php');
+require_once(DIR_SYSTEM . 'library/paypro/api.php');
 
-class PayProPaymentAdminController extends Controller
+class ControllerExtensionPaymentPayPro extends Controller
 {
 	protected $methodID;
 	protected $path;

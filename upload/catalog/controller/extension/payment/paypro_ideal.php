@@ -1,8 +1,9 @@
 <?php
 
-require_once(dirname(DIR_SYSTEM) . '/catalog/model/extension/payment/paypro/PayProPaymentCatalogController.php');
+require_once(__DIR__ . '/paypro.php');
+require_once(DIR_SYSTEM . 'library/paypro/api.php');
 
-class ControllerExtensionPaymentPayProIdeal extends PayProPaymentCatalogController {
+class ControllerExtensionPaymentPayProIdeal extends ControllerExtensionPaymentPayPro {
 	public function getTemplateData() {
 		$issuers = $this->payProApi->getIdealIssuers();
 

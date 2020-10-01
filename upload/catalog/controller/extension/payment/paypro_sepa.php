@@ -1,8 +1,8 @@
 <?php
 
-require_once(dirname(DIR_SYSTEM) . '/catalog/model/extension/payment/paypro/PayProPaymentCatalogController.php');
+require_once(__DIR__ . '/paypro.php');
 
-class ControllerExtensionPaymentPayProSepa extends PayProPaymentCatalogController {
+class ControllerExtensionPaymentPayProSepa extends ControllerExtensionPaymentPayPro {
 
 	public function getPaymentMethod() {
 		return 'banktransfer/sepa';
