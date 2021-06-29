@@ -59,7 +59,7 @@ abstract class ControllerExtensionPaymentPayPro extends Controller {
 			$redirectUrl = html_entity_decode($this->url->link($this->path . '/payment_redirect', '&order_id=' . $orderId, true));
 
 			$paymentData = [
-				'amount' => round($amount, 2) * 100,
+				'amount' => (int) (round($amount * 100, 0)),
 				'pay_method' => $this->getPaymentMethod(),
 				'return_url' => $redirectUrl,
 				'cancel_url' => $redirectUrl,
