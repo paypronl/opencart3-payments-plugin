@@ -93,10 +93,7 @@ class PayProHelper
 				'id' => 'sepa_once',
 			],
 			[
-				'id' => 'sofort_digital',
-			],
-			[
-				'id' => 'sofort_physical',
+				'id' => 'sofort',
 			],
 			[
 				'id' => 'visa',
