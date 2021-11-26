@@ -3,6 +3,12 @@
 require_once(__DIR__ . '/client/init.php');
 
 class PayProApi {
+	/**
+	 * Paypro api responses
+	 */
+	public const PAYPRO_API_RES_APIKEY_INVALID = "API key not valid";
+	public const PAYPRO_API_RES_NOT_SUBSCRIBED = "Not subscribed to money transfer service";
+
 	protected $apiKey;
 	protected $productID;
 	protected $testMode;
