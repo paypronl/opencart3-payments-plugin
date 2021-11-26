@@ -10,35 +10,11 @@ class PayProHelper
 		return strtolower(join('_', $matches[0]));
 	}
 
-	/**
-	 * @return bool
-	 */
-	public static function isOpenCart3x()
-	{
-		return version_compare(VERSION, '3.0.0', '>=');
-	}
-
-	/**
-	 * @return bool
-	 */
-	public static function isOpenCart23x()
-	{
-		return version_compare(VERSION, '2.3.0', '>=');
-	}
-
-	/**
-	 * @return bool
-	 */
-	public static function isOpenCart22x()
-	{
-		return version_compare(VERSION, '2.2.0', '>=');
-	}
-
 	public static function getPath($methodID = null)
 	{
 		$suffix = $methodID ? '_' . $methodID : '';
 
-		return PayProHelper::isOpenCart23x() ? 'extension/payment/paypro' . $suffix : 'payment/paypro' . $suffix;
+		return 'extension/payment/paypro' . $suffix;
 	}
 
 	/**
@@ -50,22 +26,12 @@ class PayProHelper
 	{
 		$suffix = $methodID ? '_' . $methodID : '';
 
-		if (self::isOpenCart3x()) {
-			return 'payment_paypro' . $suffix;
-		}
-
-		return 'paypro' . $suffix;
+        return 'payment_paypro' . $suffix;
 	}
 
 	public static function getTemplate($template)
 	{
-		$template = PayProHelper::isOpenCart23x() ? 'extension/payment/' . $template : 'payment/' . $template;
-
-		if (!PayProHelper::isOpenCart3x()) {
-			$template .= '.tpl';
-		}
-
-		return $template;
+        return 'extension/payment/' . $template;
 	}
 
 	public static function getPaymentMethods()
