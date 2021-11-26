@@ -39,6 +39,18 @@ abstract class ControllerExtensionPaymentPayPro extends Controller {
 		return $this->load->view( $prefix . PayProHelper::getTemplate('paypro'), array_merge($data, $this->getTemplateData()));
 	}
 
+    protected function HandleErrorsCreatePayment($error_msg) {
+        switch ($error_msg) {
+            case $this->payProApi::PAYPRO_API_RES_NOT_SUBSCRIBED:
+            case $this->payProApi::PAYPRO_API_RES_APIKEY_INVALID:
+                $return = 'cant-use-payment-method';
+                break;
+            default:
+                $return = 'something-went-wrong';
+        }
+        return $this->language->get($return);
+    }
+
 	/**
 	 * Start the payment and return the redirect uri
 	 */
@@ -89,7 +101,7 @@ abstract class ControllerExtensionPaymentPayPro extends Controller {
 
 				$json['redirect'] = $response['payment_url'];
 			} else {
-				$json['error'] = $this->language->get('something_went_wrong');
+				$json['error'] = self::HandleErrorsCreatePayment($response);
 			}
 		}
 
