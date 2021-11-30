@@ -220,7 +220,7 @@ class ControllerExtensionPaymentPayPro extends Controller
 	}
 
 	/**
-	 * Map template handling for different Opencart versions
+	 * Map template handling for Opencart
 	 *
 	 * @param string $template
 	 * @param array $data
@@ -282,28 +282,15 @@ class ControllerExtensionPaymentPayPro extends Controller
 	 * @return Model
 	 */
 	protected function getExtensionModel() {
-		if (PayProHelper::isOpenCart3x()) {
-			$this->load->model('setting/extension');
-			return $this->model_setting_extension;
-		}
-
-		$this->load->model('extension/extension');
-		return $this->model_extension_extension;
+        $this->load->model('setting/extension');
+        return $this->model_setting_extension;
 	}
 
 	/**
 	 * @return string
 	 */
 	private function getExtensionsUri() {
-		if (PayProHelper::isOpenCart3x()) {
-			return 'marketplace/extension';
-		}
-
-		if (PayProHelper::isOpenCart23x()) {
-			return 'extension/extension';
-		}
-
-		return 'extension/payment';
+        return 'marketplace/extension';
 	}
 
 	/**
@@ -312,16 +299,10 @@ class ControllerExtensionPaymentPayPro extends Controller
 	 * @return array|string
 	 */
 	private function getTokenParams($additionalParams = []) {
-		$params = array_merge(
-			PayProHelper::isOpenCart3x() ? [ 'user_token' => $this->session->data['user_token']] : [ 'token' => $this->session->data['token']],
+        return array_merge(
+			[ 'user_token' => $this->session->data['user_token']],
 			$additionalParams
 		);
-
-		if (PayProHelper::isOpenCart23x()) {
-			return $params;
-		}
-
-		return '&' . http_build_query($params);
 	}
 
 	private function getUserId() {
