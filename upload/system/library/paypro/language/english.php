@@ -66,7 +66,7 @@ $_['successfully_saved'] = 'The settings are saved';
 
 $_['error_permission'] = 'Permission error';
 $_['error_api_key'] = 'Invalid api key';
-$_['info_product_id'] = 'Verplicht bij het gebruik van Mastercard, Visa en Sofort';
+$_['info_product_id'] = 'Required when using MasterCard, Visa or Sofort payment methods';
 
 $_['response_completed'] = 'The payment is completed.';
 $_['response_canceled'] = 'The payment is canceled.';
