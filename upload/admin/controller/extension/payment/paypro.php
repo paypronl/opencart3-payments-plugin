@@ -106,8 +106,6 @@ class ControllerExtensionPaymentPayPro extends Controller
 		$data['entry_status'] = $this->language->get('status');
 		$data['entry_sort_order'] = $this->language->get('sort_order');
 
-		$data['info_product_id'] = $this->language->get('info_product_id');
-
 		$data['text_enabled'] = $this->language->get('text_enabled');
 		$data['text_disabled'] = $this->language->get('text_disabled');
 		$data['text_all_zones'] = $this->language->get('text_all_zones');
