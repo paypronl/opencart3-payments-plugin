@@ -4,32 +4,29 @@ $methodLogo = '<a href="https://www.paypro.nl" target="_blank"><img src="https:/
 $_['text_paypro_afterpay'] = $methodLogo;
 $_['text_paypro_bancontact'] = $methodLogo;
 $_['text_paypro_ideal'] = $methodLogo;
-$_['text_paypro_mastercard'] = $methodLogo;
+$_['text_paypro_creditcard'] = $methodLogo;
 $_['text_paypro_paypal'] = $methodLogo;
 $_['text_paypro_sepa'] = $methodLogo;
 $_['text_paypro_sepa_once'] = $methodLogo;
 $_['text_paypro_sofort'] = $methodLogo;
-$_['text_paypro_visa'] = $methodLogo;
 
 $_['heading_title_afterpay'] = 'PayPro Afterpay';
 $_['heading_title_bancontact'] = 'PayPro Bancontact';
 $_['heading_title_ideal'] = 'PayPro iDEAL';
-$_['heading_title_mastercard'] = 'PayPro Mastercard';
+$_['heading_title_creditcard'] = 'PayPro Creditcard';
 $_['heading_title_paypal'] = 'PayPro Paypal';
 $_['heading_title_sepa'] = 'PayPro Bankoverschrijving';
 $_['heading_title_sepa_once'] = 'PayPro Eenmalige Machtiging';
 $_['heading_title_sofort'] = 'PayPro Sofort';
-$_['heading_title_visa'] = 'PayPro Visa';
 
 $_['checkout_title_afterpay'] = 'Afterpay';
 $_['checkout_title_bancontact'] = 'Bancontact';
 $_['checkout_title_ideal'] = 'iDEAL';
-$_['checkout_title_mastercard'] = 'Mastercard';
+$_['checkout_title_creditcard'] = 'Creditcard';
 $_['checkout_title_paypal'] = 'Paypal';
 $_['checkout_title_sepa'] = 'Bankoverschrijving';
 $_['checkout_title_sepa_once'] = 'Eenmalige Machtiging';
 $_['checkout_title_sofort'] = 'Sofort';
-$_['checkout_title_visa'] = 'Visa';
 
 $_['paypro_config_title'] = 'PayPro Instellingen';
 $_['main_config_title'] = 'Instellingen';
@@ -39,12 +36,11 @@ $_['about_title'] = 'Over';
 $_['payment_method_afterpay'] = 'Afterpay';
 $_['payment_method_bancontact'] = 'Bancontact';
 $_['payment_method_ideal'] = 'iDEAL';
-$_['payment_method_mastercard'] = 'Mastercard';
+$_['payment_method_creditcard'] = 'Creditcard';
 $_['payment_method_paypal'] = 'Paypal';
 $_['payment_method_sepa'] = 'Bankoverschrijving';
 $_['payment_method_sepa_once'] = 'Eenmalige Machtiging';
 $_['payment_method_sofort'] = 'Sofort';
-$_['payment_method_visa'] = 'Visa';
 
 $_['text_select_your_bank'] = 'Selecteer je bank';
 
