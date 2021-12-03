@@ -93,7 +93,7 @@ class PayProHelper
 				'id' => 'sepa_once',
 			],
 			[
-				'id' => 'sofort',
+				'id' => 'sofort_physical',
 			],
 		];
 	}
