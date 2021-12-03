@@ -62,7 +62,7 @@ $_['successfully_saved'] = 'De instellingen zijn opgeslagen';
 
 $_['error_permission'] = 'Toegangsfout';
 $_['error_api_key'] = 'Geldige API key is verplicht';
-$_['info_product_id'] = 'Verplicht bij het gebruik van Mastercard, Visa en Sofort';
+$_['info_product_id'] = 'Required when using MasterCard, Visa or Sofort payment methods';
 
 $_['response_completed'] = 'De betaling is ontvangen.';
 $_['response_canceled'] = 'De betaling is geannuleerd.';
