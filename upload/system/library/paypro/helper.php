@@ -78,7 +78,7 @@ class PayProHelper
 				'id' => 'bancontact',
 			],
 			[
-				'id' => 'creditcard',
+				'id' => 'mastercard',
 			],
 			[
 				'id' => 'ideal',
