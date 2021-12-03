@@ -78,3 +78,5 @@ $_['response_failed']    = 'The payment has failed.';
 $_['response_expired']   = 'The payment has expired.';
 
 $_['something_went_wrong'] = 'Something went wrong.';
+
+$_['cant-use-payment-method'] = "Can't use this payment method, please try a different one.";
