@@ -78,10 +78,10 @@ class PayProHelper
 				'id' => 'bancontact',
 			],
 			[
-				'id' => 'mastercard',
+				'id' => 'ideal',
 			],
 			[
-				'id' => 'ideal',
+				'id' => 'mastercard',
 			],
 			[
 				'id' => 'paypal',
