@@ -79,4 +79,4 @@ $_['response_expired']   = 'De betaling is verlopen.';
 
 $_['something_went_wrong'] = 'Er is iets fout gegaan.';
 
-$_['cant-use-payment-method'] = "Kan betaal methode niet gebruiken, probeer een andere methode.";
+$_['cant-use-payment-method'] = "Kan betaalmethode niet gebruiken, probeer een andere methode.";
