@@ -61,7 +61,7 @@ You can find your PayPro API key at [https://www.paypro.nl/api](https://www.payp
 
 #### When do I need to add a product ID?
 
-Only needed for Affiliate marketing.
+When you use affiliate marketing.
 
 #### Where do I find my product ID?
 
