@@ -61,7 +61,7 @@ You can find your PayPro API key at [https://www.paypro.nl/api](https://www.payp
 
 #### When do I need to add a product ID?
 
-When you use affiliate marketing or you want to use the mastercard or visa gateway, you have to add a product ID.
+When you use affiliate marketing.
 
 #### Where do I find my product ID?
 
