@@ -11,11 +11,9 @@ With this plugin you easily add all PayPro payment gateways to your Opencart v.3
 - Banktransfer
 - Direct Debit
 - iDEAL
-- Mastercard
+- Creditcard
 - PayPal
-- Sofort Digital
-- Sofort Physical
-- Visa
+- Sofort
 
 ## Requirements
 
